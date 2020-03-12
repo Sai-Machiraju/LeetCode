@@ -1,0 +1,24 @@
+        stack=[]
+        if s=="":
+            return True
+        elif s[0] in ")]}" or len(s)==1:
+            return False
+        else:
+            l=[i for i in s]
+            for i in s:
+                if i in "({[":
+                    stack.append(i)
+                    l.remove(i)
+                else: 
+                    if len(stack)!=0:
+                        m=stack.pop()
+                        if m+i in ["()","[]","{}"]:
+                            pass
+                        else:
+                            return False
+                    else:
+                        return False
+            if len(l)!=0 and len(stack)==0:   
+                return True        
+            else:
+                return False
